@@ -2,32 +2,37 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
-    users:defineTable({
-        name:v.string(),
-        tokenIdentifier: v.string(),
-        email :v.optional(v.string()),
-        imageUrl: v.optional(v.string()),
+  // Users table
+  users: defineTable({
+    // Clerk auth
+    email: v.string(),
+    tokenIdentifier: v.string(), // Clerk user ID for auth
+    name: v.string(),
+    imageUrl: v.optional(v.string()),
 
-        hasCompletedOnboarding: v.boolean(),
+    // Onboarding
+    hasCompletedOnboarding: v.boolean(),
 
-        location:v.optional(
-            v.object({
-                city:v.string(),
-                state:v.string(),
-                country:v.string(),
+    // Attendee preferences (from onboarding)
+    location: v.optional(
+      v.object({
+        city: v.string(),
+        state: v.optional(v.string()), // Added state field
+        country: v.string(),
+      })
+    ),
+    interests: v.optional(v.array(v.string())), // Min 3 categories
 
-            })
-        ),
+    // Organizer tracking (User Subscription)
+    freeEventsCreated: v.number(), // Track free event limit (1 free)
 
-        interests: v.optional(v.array(v.string())),
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index("by_token", ["tokenIdentifier"]), // Primary auth lookup
 
-        freeEventsCreated: v.number(),
-
-        createdAt:v.number(),
-        updatedAt: v.number(),
-    }).index("by_token",["tokenIdentifier"]),
-    
-    events: defineTable({
+  // Events table
+  events: defineTable({
     title: v.string(),
     description: v.string(),
     slug: v.string(),
@@ -50,7 +55,7 @@ export default defineSchema({
     venue: v.optional(v.string()),
     address: v.optional(v.string()),
     city: v.string(),
-    state: v.optional(v.string()), 
+    state: v.optional(v.string()), // Added state field
     country: v.string(),
 
     // Capacity & Ticketing
@@ -98,4 +103,4 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_event_user", ["eventId", "userId"])
     .index("by_qr_code", ["qrCode"]),
-})
+});
