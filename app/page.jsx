@@ -13,7 +13,7 @@ export default function LandingPage() {
           <div className="text-center sm:text-left">
             <div className="mb-6">
               <span className="text-gray-500 font-light tracking-wide">
-                Eventrix<span className="text-purple-400">*</span>
+                <b>Eventrix<span className="text-purple-400">*</span></b>
               </span>
             </div>
 
@@ -41,7 +41,7 @@ export default function LandingPage() {
           {/* Right - 3D Phone Mockup */}
           <div className="relative block">
             <Image
-              src="/hero.png"
+              src="/3d-react.png"
               // src="/hero.gif"
               alt="react meetup"
               width={700}

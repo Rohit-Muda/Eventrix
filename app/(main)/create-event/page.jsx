@@ -115,10 +115,29 @@ export default function CreateEventPage() {
   }, [selectedState, indianStates]);
 
   // Color presets - show all for Pro, only default for Free
-  const colorPresets = [
-    "#1e3a8a", // Default color (always available)
-    ...(hasPro ? ["#4c1d95", "#065f46", "#92400e", "#7f1d1d", "#831843"] : []),
+
+  const PRO_COLORS = [
+    "#4c1d95", // Purple
+    "#065f46", // Emerald
+    "#92400e", // Amber
+    "#7f1d1d", // Red
+    "#831843", // Rose
+    "#0f766e", // Teal
+    "#1f2937", // Slate
+    "#4338ca", // Indigo deep
+    "#15803d", // Green
+    "#b45309", // Orange
+    "#6b21a8", // Violet
+    "#be123c", // Crimson
   ];
+
+  const FREE_COLORS = [
+    "#1e3a8a", // Indigo
+  ];
+  const colorPresets = hasPro
+  ? [...FREE_COLORS, ...PRO_COLORS]
+  : FREE_COLORS;
+
 
   const handleColorClick = (color) => {
     // If not default color and user doesn't have Pro

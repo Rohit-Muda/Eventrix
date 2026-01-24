@@ -27,12 +27,12 @@ export default function Header() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-xl z-20 border-b">
+      <nav className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-xl z-20 border-b">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/eventrix.png"
+              src="/logo.png"
               alt="Eventrix logo"
               width={500}
               height={500}
