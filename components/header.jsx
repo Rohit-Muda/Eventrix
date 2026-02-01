@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Building, Crown, Plus, Sparkles, Ticket } from "lucide-react";
+import { Building, Crown, Heart, Plus, Ticket } from "lucide-react";
 import { SignInButton, useAuth, UserButton, useUser } from "@clerk/nextjs";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { BarLoader } from "react-spinners";
@@ -66,11 +66,16 @@ export default function Header() {
               </Button>
             )}
 
-            <Button variant="ghost" size="sm" asChild className={"mr-2"}>
+            <Button variant="ghost" size="sm" asChild className="mr-2">
               <Link href="/explore">Explore</Link>
             </Button>
 
             <Authenticated>
+              <Button variant="ghost" size="sm" asChild className="mr-2 gap-1.5">
+                <Link href="/interests">
+                  Your Interests
+                </Link>
+              </Button>
               {/* Create Event Button */}
               <Button size="sm" asChild className="flex gap-2 mr-4">
                 <Link href="/create-event">

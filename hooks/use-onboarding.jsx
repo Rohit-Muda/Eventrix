@@ -6,7 +6,7 @@ import { useConvexQuery } from "./use-convex-query";
 import { api } from "@/convex/_generated/api";
 
 // Pages that require onboarding (attendee-centered)
-const ATTENDEE_PAGES = ["/explore", "/events", "/my-tickets", "/profile"];
+const ATTENDEE_PAGES = ["/explore", "/interests", "/events", "/my-tickets", "/profile"];
 
 export function useOnboarding() {
   const [showOnboarding, setShowOnboarding] = useState(false);

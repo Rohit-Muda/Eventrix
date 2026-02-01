@@ -27,7 +27,7 @@ export default function ExplorePage() {
   const router = useRouter();
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
-  // Fetch current user for location
+  // Fetch current user for location (Events Near You)
   const { data: currentUser } = useConvexQuery(api.users.getCurrentUser);
 
   // Fetch events
@@ -75,7 +75,7 @@ export default function ExplorePage() {
     count: categoryCounts?.[cat.id] || 0,
   }));
 
-  // Loading state
+  // Loading state (main content; For You has its own loading)
   const isLoading = loadingFeatured || loadingLocal || loadingPopular;
 
   if (isLoading) {
@@ -110,7 +110,7 @@ export default function ExplorePage() {
               {featuredEvents.map((event) => (
                 <CarouselItem key={event._id}>
                   <div
-                    className="relative h-[400px] rounded-xl overflow-hidden cursor-pointer"
+                    className="relative h-100 rounded-xl overflow-hidden cursor-pointer"
                     onClick={() => handleEventClick(event.slug)}
                   >
                     {event.coverImage ? (
@@ -127,7 +127,7 @@ export default function ExplorePage() {
                         style={{ backgroundColor: event.themeColor }}
                       />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
+                    <div className="absolute inset-0 bg-linear-to-r from-black/60 to-black/30" />
                     <div className="relative h-full flex flex-col justify-end p-8 md:p-12">
                       <Badge className="w-fit mb-4" variant="secondary">
                         {event.city}, {event.state || event.country}
