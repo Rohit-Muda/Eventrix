@@ -67,7 +67,7 @@ export default function YourInterestsPage() {
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <Card key={i} className="overflow-hidden">
                 <div className="h-48 bg-muted animate-pulse" />
-                <CardContent className="p-4 space-y-1">
+                <CardContent className="p-4 space-y-3">
                   <div className="h-4 bg-muted animate-pulse rounded w-3/4" />
                   <div className="h-3 bg-muted animate-pulse rounded w-1/2" />
                   <div className="h-3 bg-muted animate-pulse rounded w-full" />
